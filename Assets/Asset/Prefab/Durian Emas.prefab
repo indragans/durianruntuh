@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
+  points: 20
 --- !u!95 &-2001262021338309125
 Animator:
   serializedVersion: 5
