@@ -1,3 +1,8 @@
+# ======================================
+# Unity .gitignore (Final & Lengkap)
+# ======================================
+
+# Folder auto-generated Unity
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -6,6 +11,60 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 [Uu]serSettings/
-[Packages]/com.unity.package-manager-ui/
-Library/ArtifactDB
-Logs/shadercompiler-UnityShaderCompiler.exe0.log
+
+# Asset Store Tools
+[Aa]ssets/AssetStoreTools*
+
+# Cache & crash reports
+sysinfo.txt
+*.stacktrace
+
+# Visual Studio / Rider auto files
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Build results
+*.apk
+*.aab
+*.unitypackage
+*.app
+*.exe
+*.dll
+
+# Addressables cache
+/[Aa]ssets/[Aa]ddressableAssetsData/*/Build/**
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+
+# Unity generated meta files (untuk .dll)
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# JetBrains Rider plugin
+[Aa]ssets/Plugins/Editor/JetBrains*
+
+# Crash log
+crashlytics-build.properties
+
+# VS Code debugger
+.vs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+ProjectSettings/ProjectSettings.asset

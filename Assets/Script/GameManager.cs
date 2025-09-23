@@ -18,15 +18,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f; // pastikan waktu normal saat mulai game
     }
 
-    public void ScoreAdd()
+    public void ScoreAdd(int amount = 10)
     {
         if (!GameOver)
         {
-            score += 10;
-            if (scoreBoard != null)
-                scoreBoard.text = score.ToString();
+            score += amount;
+            if (scoreBoard != null) scoreBoard.text = score.ToString();
         }
     }
+
 
     public void TriggerGameOver()
     {
