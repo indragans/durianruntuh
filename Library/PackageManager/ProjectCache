@@ -369,13 +369,16 @@ m_ResolvedPackages:
     - 3.0.35
     - 3.0.36
     - 3.0.37
+    - 3.0.38
     compatible:
     - 3.0.34
     - 3.0.35
     - 3.0.36
     - 3.0.37
-    recommended: 3.0.37
-    deprecated: []
+    - 3.0.38
+    recommended: 3.0.38
+    deprecated:
+    - 3.0.37
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -4217,6 +4220,7 @@ m_ResolvedPackages:
     - 1.2.5
     - 2.0.0
     - 2.0.1
+    - 2.0.2
     - 3.0.0
     compatible:
     - 1.1.7
@@ -4858,6 +4862,7 @@ m_ResolvedPackages:
     - 1.8.22
     - 1.8.23
     - 1.8.24
+    - 1.8.25
     compatible:
     - 1.8.18
     - 1.8.19
@@ -4866,7 +4871,8 @@ m_ResolvedPackages:
     - 1.8.22
     - 1.8.23
     - 1.8.24
-    recommended: 1.8.24
+    - 1.8.25
+    recommended: 1.8.25
     deprecated: []
   dependencies:
   - name: com.unity.mathematics
