@@ -68,16 +68,6 @@ crashlytics-build.properties
 Thumbs.db
 desktop.ini
 ProjectSettings/ProjectSettings.asset
-[Ll]ibrary/
-[Ll]ogs/
-[Tt]emp/
-[Bb]uild*/
-[Oo]bj/
-[Bb]in/
-UserSettings/
-Library/ArtifactDB
-Logs/shadercompiler-UnityShaderCompiler.exe0.log
-Logs/shadercompiler-UnityShaderCompiler.exe0.log
-Library/ArtifactDB
-[Ll]ibrary/
-[Ll]ogs/
+
+# Tambahan dari branch dev
+[Packages]/com.unity.package-manager-ui/
