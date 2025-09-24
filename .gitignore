@@ -68,3 +68,6 @@ crashlytics-build.properties
 Thumbs.db
 desktop.ini
 ProjectSettings/ProjectSettings.asset
+
+# Tambahan dari branch dev
+[Packages]/com.unity.package-manager-ui/
