@@ -44,6 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe97a93b11952a5438712831dbe7c17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 1
   go:
   - {fileID: 8233514191768172373, guid: 1e58ba636a9e00640bc5cca2ca7fc39c, type: 3}
+  - {fileID: 8233514191768172373, guid: 7678a1f6c0b4bf041af5b51485dda352, type: 3}
   - {fileID: 855965597372538719, guid: d584a68852bdf1540ad94f1f2f5f9cd1, type: 3}
+  objRate:
+  - 50
+  - 50
+  - 20
+  jeda: 1.5

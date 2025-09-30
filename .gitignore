@@ -45,6 +45,14 @@ sysinfo.txt
 *.exe
 *.dll
 
+**/obj/
+**/bin/
+Assets/*.csproj
+Assets/*.sln
+Assets/Directory.Build.props
+Assets/Directory.Build.targets
+Assets/global.json
+
 # Addressables cache
 /[Aa]ssets/[Aa]ddressableAssetsData/*/Build/**
 /[Aa]ssets/[Ss]treamingAssets/aa.meta

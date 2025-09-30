@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  scoreBoard: {fileID: 0}
   GameOver: 0
   gameOverPanel: {fileID: 0}
-  scoreBoard: {fileID: 0}
+  maxLives: 3
+  lives: 0
+  lifeIcons: []
