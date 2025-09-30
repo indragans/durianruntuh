@@ -9,7 +9,7 @@ public class MovementPlayer : MonoBehaviour
     private Vector3 movement;
 
     public float limitX = 2f;   // batas kanan-kiri
-    public float speed = 10f;   // kecepatan mengikuti jari
+    public float speed = 10f;   // kecepatan gerak
     
 
     void Start()
@@ -20,17 +20,15 @@ public class MovementPlayer : MonoBehaviour
 
     void Update()
     {
-        #if UNITY_EDITOR || UNITY_STANDALONE   // kalau dijalankan di PC
+#if UNITY_EDITOR || UNITY_STANDALONE   // kalau dijalankan di PC
         HandleKeyboardMovement();
+        HandleMouseMovement(); // tambahin kontrol mouse
 #elif UNITY_ANDROID || UNITY_IOS       // kalau di Android/iOS
-            HandleTouchMovement();
+        HandleTouchMovement();
 #endif
-    
     }
 
-   
-
-    // --- FUNGSI UNTUK PC ---
+    // --- FUNGSI UNTUK PC (Keyboard) ---
     void HandleKeyboardMovement()
     {
         float move = 0f;
@@ -49,24 +47,18 @@ public class MovementPlayer : MonoBehaviour
         // animasi jalan
         anim.SetBool("WalkLeft", move < 0);
         anim.SetBool("WalkRight", move > 0);
-
-        // balik arah (flip)
-        if (move < 0)
-            tr.localScale = new Vector3(0.23f, 0.23f, 0.23f);
-        else if (move > 0)
-            tr.localScale = new Vector3(0.23f, 0.23f, 0.23f);
     }
 
-
-    // --- FUNGSI UNTUK ANDROID ---
-    void HandleTouchMovement()
+    // --- FUNGSI UNTUK PC (Mouse) ---
+    void HandleMouseMovement()
     {
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButton(0)) // klik kiri ditekan
         {
-            Touch touch = Input.GetTouch(0);
+            // ambil jarak z antara kamera dan player
+            float zDist = Camera.main.WorldToScreenPoint(tr.position).z;
 
             Vector3 pos = Camera.main.ScreenToWorldPoint(
-                new Vector3(touch.position.x, touch.position.y, Camera.main.nearClipPlane)
+                new Vector3(Input.mousePosition.x, Input.mousePosition.y, zDist)
             );
 
             float targetX = Mathf.Clamp(pos.x, -limitX, limitX);
@@ -78,16 +70,45 @@ public class MovementPlayer : MonoBehaviour
                 Time.deltaTime * speed
             );
 
-            // cek apakah posisinya berubah
-            bool WalkLeft = Mathf.Abs(newPos.x - tr.position.x) > 0.001f;
+            // update posisi
+            tr.position = newPos;
+
+            // animasi
+            anim.SetBool("WalkLeft", newPos.x < tr.position.x);
+            anim.SetBool("WalkRight", newPos.x > tr.position.x);
+        }
+    }
+
+    // --- FUNGSI UNTUK ANDROID (Touch) ---
+    void HandleTouchMovement()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            float zDist = Camera.main.WorldToScreenPoint(tr.position).z;
+            Vector3 pos = Camera.main.ScreenToWorldPoint(
+                new Vector3(touch.position.x, touch.position.y, zDist)
+            );
+
+            float targetX = Mathf.Clamp(pos.x, -limitX, limitX);
+
+            // smooth lerp biar halus
+            Vector3 newPos = Vector3.Lerp(
+                tr.position,
+                new Vector3(targetX, tr.position.y, tr.position.z),
+                Time.deltaTime * speed
+            );
 
             tr.position = newPos;
 
-            anim.SetBool("WalkLeft", WalkLeft);
+            anim.SetBool("WalkLeft", newPos.x < tr.position.x);
+            anim.SetBool("WalkRight", newPos.x > tr.position.x);
         }
         else
         {
-           anim.SetBool("WalkLeft", false);
+            anim.SetBool("WalkLeft", false);
+            anim.SetBool("WalkRight", false);
         }
     }
 }
