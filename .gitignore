@@ -79,3 +79,4 @@ ProjectSettings/ProjectSettings.asset
 
 # Tambahan dari branch dev
 [Packages]/com.unity.package-manager-ui/
+Library/ArtifactDB
