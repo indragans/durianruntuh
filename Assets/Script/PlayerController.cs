@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public ArduinoDataReader arduino; // referensi script ArduinoDataReader
     public float limitX = 2f;
     public float speed = 10f;
 
@@ -14,8 +15,20 @@ public class PlayerController : MonoBehaviour
         HandleKeyboardInput();
 #elif UNITY_ANDROID || UNITY_IOS
         HandleTouchInput();
+#else
+    HandleArduinoInput();
 #endif
     }
+
+    void HandleArduinoInput()
+    {
+        if (arduino == null) return;
+
+        // Misal data dari Arduino berupa nilai Yaw (rotasi horizontal)
+        float yaw = arduino.CurrentX; // ambil dari ArduinoDataReader
+        MoveDirection = Mathf.Clamp(yaw / 30f, -1f, 1f); 
+    }
+
 
     void HandleKeyboardInput()
     {
